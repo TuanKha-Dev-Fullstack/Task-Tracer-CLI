@@ -1,0 +1,45 @@
+# Build Folders
+bin/
+obj/
+
+# Rider-specific files
+.idea/
+.idea_modules/
+*.sln.iml
+*.dotCover
+*.sln.DotSettings
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# User-specific files
+.vscode/
+*.userprefs
+*.csproj.user
+
+# Logs
+*.log
+*.tlog
+*.pid
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Packages
+*.nupkg
+*.snupkg
+
+# Environment and JetBrains Cache
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/*
+*.vcxproj.user
+_ReSharper*/ 
+.vs/
+/.idea
+/bin
