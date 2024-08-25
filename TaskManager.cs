@@ -79,6 +79,27 @@ public class TaskManager
         }
     }
     
+    public void MarkInProgress(int id)
+    {
+        try
+        {
+            var task = _tasks.FirstOrDefault(t => t.Id == id);
+            if (task == null)
+            {
+                Console.WriteLine("Task not found. Please try again.");
+                return;
+            }
+            task.Status = TaskStatus.InProgress;
+            SaveTasks();
+            Console.WriteLine($"Task marked in progress successfully (ID: {task.Id})");
+        }
+        catch (Exception)
+        {
+            Console.WriteLine("An error occurred, please try again. If the error persists, please contact support.");
+            throw;
+        }
+    }
+    
     private void SaveTasks()
     {
         var json = JsonSerializer.Serialize(_tasks);

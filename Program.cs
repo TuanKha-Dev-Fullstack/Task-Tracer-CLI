@@ -31,6 +31,9 @@ public static class Program
                 case "delete":
                     taskManager.DeleteTask(int.Parse(argument1));
                     break;
+                case "mark-in-progress":
+                    taskManager.MarkInProgress(int.Parse(argument1));
+                    break;
                 default:
                     Console.WriteLine("Unknown command. Use \"help\" for a list of available commands.");
                     break;
