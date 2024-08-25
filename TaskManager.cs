@@ -37,6 +37,27 @@ public class TaskManager
         }
     }
     
+    public void UpdateTask(int id, string description)
+    {
+        try
+        {
+            var task = _tasks.FirstOrDefault(t => t.Id == id);
+            if (task == null)
+            {
+                Console.WriteLine("Task not found. Please try again.");
+                return;
+            }
+            task.Description = description.Trim('\"');
+            SaveTasks();
+            Console.WriteLine($"Task updated successfully (ID: {task.Id})");
+        }
+        catch (Exception)
+        {
+            Console.WriteLine("An error occurred, please try again. If the error persists, please contact support.");
+            throw;
+        }
+    }
+    
     private void SaveTasks()
     {
         var json = JsonSerializer.Serialize(_tasks);

@@ -25,6 +25,9 @@ public static class Program
                 case "add":
                     taskManager.AddTask(argument1);
                     break;
+                case "update":
+                    taskManager.UpdateTask(int.Parse(argument1), argument2);
+                    break;
                 default:
                     Console.WriteLine("Unknown command. Use \"help\" for a list of available commands.");
                     break;
