@@ -28,6 +28,9 @@ public static class Program
                 case "update":
                     taskManager.UpdateTask(int.Parse(argument1), argument2);
                     break;
+                case "delete":
+                    taskManager.DeleteTask(int.Parse(argument1));
+                    break;
                 default:
                     Console.WriteLine("Unknown command. Use \"help\" for a list of available commands.");
                     break;

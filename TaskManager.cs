@@ -58,6 +58,27 @@ public class TaskManager
         }
     }
     
+    public void DeleteTask(int id)
+    {
+        try
+        {
+            var task = _tasks.FirstOrDefault(t => t.Id == id);
+            if (task == null)
+            {
+                Console.WriteLine("Task not found. Please try again.");
+                return;
+            }
+            _tasks.Remove(task);
+            SaveTasks();
+            Console.WriteLine($"Task deleted successfully (ID: {task.Id})");
+        }
+        catch (Exception)
+        {
+            Console.WriteLine("An error occurred, please try again. If the error persists, please contact support.");
+            throw;
+        }
+    }
+    
     private void SaveTasks()
     {
         var json = JsonSerializer.Serialize(_tasks);
