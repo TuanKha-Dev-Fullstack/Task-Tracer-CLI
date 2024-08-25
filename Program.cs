@@ -1,37 +1,34 @@
 ﻿namespace Task_Tracer_CLI;
 
-class Program
+public static class Program
 {
-    static void Main(string[] args)
+    private static void Main()
     {
-        if (args.Length == 0)
+        var taskManager = new TaskManager();
+        string? input;
+        Console.WriteLine("======================Task Tracer CLI======================");
+        Console.WriteLine("Use \"help\" for more information.");
+        do
         {
-            Console.WriteLine(
-                "No command provided. Use 'add', 'update', 'delete', 'mark-in-progress', 'mark-done', 'list', 'list done', 'list in-progress', 'list todo'");
-        }
-        else
-        {
-            var taskManager = new TaskManager();
-            var command = args[0];
-
+            // handle user input
+            Console.Write("task-cli> ");
+            input = Console.ReadLine()?.Trim();
+            if (string.IsNullOrEmpty(input)) continue;
+            const int amountArgs = 3;
+            var commandParts = input.Split(' ', amountArgs); // divide input into arguments array
+            var command = commandParts[0].ToLower(); // get function name from first argument
+            var argument1 = commandParts.Length > 1 ? commandParts[1] : ""; // get arguments from rest of array
+            var argument2 = commandParts.Length > 2 ? commandParts[2] : ""; // get arguments from rest of array
             switch (command)
             {
+                // case for add task
                 case "add":
-                    if (args.Length < 2)
-                    {
-                        Console.WriteLine("Usage: task-cli add \"Task description\"");
-                    }
-                    else
-                    {
-                        var description = args[1];
-                        taskManager.AddTask(description);
-                    }
-
+                    taskManager.AddTask(argument1);
                     break;
                 default:
-                    Console.WriteLine("Unknown command.");
+                    Console.WriteLine("Unknown command. Use \"help\" for a list of available commands.");
                     break;
             }
-        }
+        } while (input != "exit");
     }
 }

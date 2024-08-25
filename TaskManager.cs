@@ -22,10 +22,19 @@ public class TaskManager
 
     public void AddTask(string description)
     {
-        var newId = _tasks.Max(t => t.Id) + 1;
-        var newTask = new Task(newId, description);
-        _tasks.Add(newTask);
-        Console.WriteLine($"Task {newTask.Id} added successfully.");
+        try
+        {
+            var newId = _tasks.Count == 0 ? 1 : _tasks.Max(t => t.Id) + 1;
+            var newTask = new Task(newId, description);
+            _tasks.Add(newTask);
+            SaveTasks();
+            Console.WriteLine($"Task added successfully (ID: {newId})");
+        }
+        catch (Exception)
+        {
+            Console.WriteLine("An error occurred, please try again. If the error persists, please contact support.");
+            throw;
+        }
     }
     
     private void SaveTasks()
