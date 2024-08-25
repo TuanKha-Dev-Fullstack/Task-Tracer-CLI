@@ -37,6 +37,9 @@ public static class Program
                 case "mark-done":
                     taskManager.MarkDone(int.Parse(argument1));
                     break;
+                case "list":
+                    taskManager.ListTasks(argument1);
+                    break;
                 default:
                     Console.WriteLine("Unknown command. Use \"help\" for a list of available commands.");
                     break;

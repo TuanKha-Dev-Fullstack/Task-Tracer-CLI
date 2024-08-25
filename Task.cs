@@ -5,8 +5,8 @@ public class Task(int id, string description)
     public int Id { get; } = id;
     public  string Description { get; set; } = description;
     public  TaskStatus Status { get; set; } = TaskStatus.Todo; // todo, in-progress, done
-    private DateTime CreatedAt { get; } = DateTime.Now;
-    private DateTime UpdatedAt { get; set; } = DateTime.Now;
+    public DateTime CreatedAt { get; } = DateTime.Now;
+    public DateTime UpdatedAt { get; set; } = DateTime.Now;
 
     public void Update(string description)
     {
