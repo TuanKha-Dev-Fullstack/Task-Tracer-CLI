@@ -128,6 +128,8 @@ public static partial class Program
             case "help":
                 PrintHelp();
                 break;
+            case "exit":
+                return;
             default:
                 Console.WriteLine("Unknown command. Use \"help\" for a list of available commands.");
                 break;
